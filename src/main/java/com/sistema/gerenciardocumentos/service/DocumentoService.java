@@ -115,14 +115,7 @@ public class DocumentoService {
     }
 
 
-    /**
-     * Deleta um arquivo do sistema de arquivos usando o ResourceLoader do Spring.
-     *
-     * O ResourceLoader fornece abstração para manipulação de recursos (arquivos,
-     * classpath, URLs) de forma consistente no ecossistema Spring.
-     *
-     * @param path Caminho completo do arquivo a ser deletado
-     */
+    /* criei essa delete separada, para usar o ResourceLoader do spring*/
     @Autowired
     private ResourceLoader resourceLoader;
 

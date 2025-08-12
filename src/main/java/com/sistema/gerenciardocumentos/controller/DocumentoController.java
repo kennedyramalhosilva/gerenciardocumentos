@@ -2,6 +2,9 @@ package com.sistema.gerenciardocumentos.controller;
 
 import com.sistema.gerenciardocumentos.model.Documento;
 import com.sistema.gerenciardocumentos.service.DocumentoService;
+//import lombok.extern.slf4j.Slf4j; declarei manualmente o log4j, dava pra usar debaixo dos panos também com lombok
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -23,36 +26,36 @@ public class DocumentoController {
         this.service = service;
     }
 
+    private static final Logger logger = LogManager.getLogger(DocumentoService.class);
+
     @PostMapping
     public ResponseEntity<Documento> criar(@RequestParam String nome, @RequestParam MultipartFile arquivo) throws IOException {
-        return ResponseEntity.ok(service.salvarDocumento(nome, arquivo));
+        logger.info("Recebendo requisição para criar documento: {}", nome);
+        Documento doc = service.salvarDocumento(nome, arquivo);
+        logger.info("Documento criado com sucesso: id={}, nome={}", doc.getId(), doc.getNome());
+        return ResponseEntity.ok(doc);
     }
 
     @GetMapping("/{id}/preview")
     public ResponseEntity<ByteArrayResource> preview(@PathVariable Long id) throws IOException {
+        logger.info("Gerando preview do documento id={}", id);
         Documento doc = service.buscarPorId(id);
         byte[] dados = Files.readAllBytes(Paths.get(doc.getCaminhoArquivo()));
 
         String contentTypeString = Files.probeContentType(Paths.get(doc.getCaminhoArquivo()));
-        MediaType contentType;
-
-        if (contentTypeString != null) {
-            contentType = MediaType.parseMediaType(contentTypeString);
-        } else {
-            contentType = MediaType.APPLICATION_OCTET_STREAM;
-        }
+        MediaType contentType = (contentTypeString != null) ?
+                MediaType.parseMediaType(contentTypeString) : MediaType.APPLICATION_OCTET_STREAM;
 
         return ResponseEntity.ok()
                 .contentType(contentType)
                 .body(new ByteArrayResource(dados));
     }
 
-    //para baixar o arquivo, coloque a URL + ID do documento no navegador
     @GetMapping("/{id}/download")
     public ResponseEntity<ByteArrayResource> download(@PathVariable Long id) throws IOException {
+        logger.info("Iniciando download do documento id={}", id);
         Documento doc = service.buscarPorId(id);
         byte[] dados = Files.readAllBytes(Paths.get(doc.getCaminhoArquivo()));
-
         String nomeArquivo = Paths.get(doc.getCaminhoArquivo()).getFileName().toString();
 
         return ResponseEntity.ok()
@@ -63,12 +66,17 @@ public class DocumentoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Documento> atualizar(@PathVariable Long id, @RequestParam MultipartFile arquivo) throws IOException {
-        return ResponseEntity.ok(service.atualizarDocumento(id, arquivo));
+        logger.info("Atualizando documento id={}", id);
+        Documento atualizado = service.atualizarDocumento(id, arquivo);
+        logger.info("Documento atualizado com sucesso: id={}", id);
+        return ResponseEntity.ok(atualizado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) throws IOException {
+        logger.warn("Solicitação para deletar documento id={}", id);
         service.deletarDocumento(id);
+        logger.info("Documento id={} deletado com sucesso", id);
         return ResponseEntity.noContent().build();
     }
 }

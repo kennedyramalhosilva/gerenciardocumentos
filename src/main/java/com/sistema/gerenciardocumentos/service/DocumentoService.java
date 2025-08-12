@@ -3,6 +3,7 @@ package com.sistema.gerenciardocumentos.service;
 import com.sistema.gerenciardocumentos.model.Documento;
 import com.sistema.gerenciardocumentos.repository.DocumentoRepository;
 //import lombok.extern.slf4j.Slf4j; declarei manualmente o log4j, dava pra usar debaixo dos panos também com lombok
+import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +24,7 @@ public class DocumentoService {
     private final ResourceLoader resourceLoader;
     private static final Logger logger = LogManager.getLogger(DocumentoService.class);
 
+    @Setter
     @Value("${app.upload-dir}")
     private String pastaUpload;
 

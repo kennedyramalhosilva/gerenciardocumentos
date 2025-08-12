@@ -19756,3 +19756,20 @@ java.lang.RuntimeException: Documento não encontrado
 2025-08-12 00:17:17.521 [http-nio-8080-exec-8] INFO  com.sistema.gerenciardocumentos.service.DocumentoService - Arquivo C:\Users\Kennedy\TesteJava_APIDocumentos\gerenciardocumentos\uploads\cv-atual_1754960998962.png deletado com sucesso
 2025-08-12 00:17:17.522 [http-nio-8080-exec-8] INFO  com.sistema.gerenciardocumentos.service.DocumentoService - Documento id=10 atualizado com novo arquivo cv-atual_1754968637518.pdf
 2025-08-12 00:17:17.569 [http-nio-8080-exec-8] INFO  com.sistema.gerenciardocumentos.service.DocumentoService - Documento atualizado com sucesso: id=10
+2025-08-12 20:14:57.014 [main] INFO  com.sistema.gerenciardocumentos.service.DocumentoService - Arquivo salvo em C:\Users\Kennedy\TesteJava_APIDocumentos\gerenciardocumentos\uploads\teste_1755040496989.txt
+2025-08-12 20:16:46.780 [main] INFO  com.sistema.gerenciardocumentos.GerenciardocumentosApplication - Aplicação iniciada!
+2025-08-12 20:16:47.272 [main] INFO  com.sistema.gerenciardocumentos.GerenciardocumentosApplication - Starting GerenciardocumentosApplication using Java 21.0.8 with PID 48544 (C:\Users\Kennedy\TesteJava_APIDocumentos\gerenciardocumentos\target\classes started by Kennedy in C:\Users\Kennedy\TesteJava_APIDocumentos\gerenciardocumentos)
+2025-08-12 20:16:47.277 [main] INFO  com.sistema.gerenciardocumentos.GerenciardocumentosApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-12 20:16:50.088 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-12 20:16:52.015 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-12 20:16:52.048 [main] WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 73cd0a97-76a0-4841-a800-900fa73f2bee
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-12 20:16:52.782 [main] INFO  com.sistema.gerenciardocumentos.GerenciardocumentosApplication - Started GerenciardocumentosApplication in 5.892 seconds (process running for 7.071)
+2025-08-12 20:17:32.560 [http-nio-8080-exec-3] WARN  org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "1L"]
+2025-08-12 20:17:33.923 [http-nio-8080-exec-4] WARN  org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "1L"]
+2025-08-12 20:23:16.843 [main] INFO  com.sistema.gerenciardocumentos.service.DocumentoService - Diretório de upload criado em C:\Users\Kennedy\TesteJava_APIDocumentos\gerenciardocumentos\uploads-test
+2025-08-12 20:23:16.862 [main] INFO  com.sistema.gerenciardocumentos.service.DocumentoService - Arquivo salvo em C:\Users\Kennedy\TesteJava_APIDocumentos\gerenciardocumentos\uploads-test\teste_1755040996846.txt
